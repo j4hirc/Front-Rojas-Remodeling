@@ -10,10 +10,12 @@ import { CommonModule } from '@angular/common';
 })
 export class UsuariosComponent implements OnInit {
   // Estos datos vendrán de tu API en el futuro
+
   usuarios = [
     { id: 1, nombre: 'Josué Abad', email: 'admin@rojas.com', rol: 'ADMIN', estado: 'Activo' },
     { id: 2, nombre: 'Juan Pérez', email: 'juan.p@remodeling.com', rol: 'USER', estado: 'Activo' },
     { id: 3, nombre: 'Maria Garcia', email: 'm.garcia@remodeling.com', rol: 'USER', estado: 'Inactivo' },
+    { id: 4, nombre: 'Elkin Castro', email: 'castro@remodeling.com', rol: 'USER', estado: 'Activo' },
   ];
 
   constructor() {}
