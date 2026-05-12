@@ -1,14 +1,41 @@
-<div class="dashboard-wrapper">
-  <nav class="navbar">
-    <h1>Rojas Remodeling</h1>
-    <button (click)="logout()" class="btn-logout">Cerrar Sesión</button>
-  </nav>
+<div class="admin-wrapper" [class.menu-active]="isMenuOpen()">
+  
+  <header class="mobile-header">
+    <button type="button" (click)="toggleMenu()" class="menu-btn">☰</button>
+    <span class="brand">Rojas Remodeling</span>
+  </header>
 
-  <main class="content">
-    <div class="welcome-card">
-      <h2>¡Bienvenido al Panel de Control!</h2>
-      <p>Has ingresado correctamente usando tu <strong>accessToken</strong>.</p>
-      <div class="status-badge">Sesión Activa</div>
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>ROJAS <span>Admin</span></h2>
+      <button type="button" class="close-btn" (click)="toggleMenu()">✕</button>
+    </div>
+
+    <nav class="nav-links">
+  <a (click)="navegarA('/dashboard/resumen')" style="cursor: pointer;">
+    <span class="icon">📊</span> Resumen
+  </a>
+
+  <a (click)="navegarA('/dashboard/usuarios')" style="cursor: pointer;">
+    <span class="icon">👥</span> Usuarios
+  </a>
+
+  <a (click)="navegarA('/dashboard/proyectos')" style="cursor: pointer;">
+    <span class="icon">🏗️</span> Proyectos
+  </a>
+</nav>
+
+    <div class="sidebar-footer">
+      <button type="button" class="logout-btn" (click)="logout()">Cerrar Sesión</button>
+    </div>
+  </aside>
+
+  <div class="overlay" (click)="toggleMenu()"></div>
+
+  <main class="main-content">
+    <div class="page-container">
+      <router-outlet></router-outlet>
     </div>
   </main>
+
 </div>

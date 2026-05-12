@@ -1,0 +1,47 @@
+<div class="usuarios-container">
+  <div class="header-section">
+    <h2>Gestión de Usuarios</h2>
+    <button class="btn-add">+ Nuevo Usuario</button>
+  </div>
+
+  <div class="table-container">
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of usuarios">
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.email }}</td>
+          <td><span class="badge rol">{{ user.rol }}</span></td>
+          <td><span class="status" [class.active]="user.estado === 'Activo'">{{ user.estado }}</span></td>
+          <td>
+            <button class="btn-edit">✏️</button>
+            <button class="btn-delete" (click)="eliminarUsuario(user.id)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mobile-cards">
+    <div class="card" *ngFor="let user of usuarios">
+      <div class="card-header">
+        <strong>{{ user.nombre }}</strong>
+        <span class="status" [class.active]="user.estado === 'Activo'"></span>
+      </div>
+      <p>Email: {{ user.email }}</p>
+      <p>Rol: <strong>{{ user.rol }}</strong></p>
+      <div class="card-actions">
+        <button class="btn-edit">Editar</button>
+        <button class="btn-delete" (click)="eliminarUsuario(user.id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

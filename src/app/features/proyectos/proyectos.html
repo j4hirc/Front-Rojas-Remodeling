@@ -1,0 +1,56 @@
+<div class="proyectos-container">
+  <div class="header-section">
+    <h2>Control de Proyectos</h2>
+    <button class="btn-new-project">+ Registrar Obra</button>
+  </div>
+
+  <div class="table-container">
+    <table class="project-table">
+      <thead>
+        <tr>
+          <th>Obra</th>
+          <th>Cliente</th>
+          <th>Fecha Inicio</th>
+          <th>Progreso</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of proyectos">
+          <td><strong>{{ p.nombre }}</strong></td>
+          <td>{{ p.cliente }}</td>
+          <td>{{ p.fecha }}</td>
+          <td class="progress-cell">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" [style.width.%]="p.progreso" [style.background-color]="getProgresoColor(p.progreso)"></div>
+            </div>
+            <span>{{ p.progreso }}%</span>
+          </td>
+          <td><span class="badge" [attr.data-status]="p.estado">{{ p.estado }}</span></td>
+          <td><button class="btn-action">Detalles</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mobile-grid">
+    <div class="project-card" *ngFor="let p of proyectos">
+      <div class="card-header">
+        <h3>{{ p.nombre }}</h3>
+        <span class="badge" [attr.data-status]="p.estado">{{ p.estado }}</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Cliente:</strong> {{ p.cliente }}</p>
+        <p><strong>Inicio:</strong> {{ p.fecha }}</p>
+        <div class="mobile-progress">
+          <span>Progreso: {{ p.progreso }}%</span>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" [style.width.%]="p.progreso" [style.background-color]="getProgresoColor(p.progreso)"></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-full">Gestionar Obra</button>
+    </div>
+  </div>
+</div>
